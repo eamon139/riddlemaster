@@ -13,16 +13,8 @@ def write_to_file(filename, data):
     with open(filename, "a") as file:
         file.writelines(data)
 
-def add_messages(username, message):
-    """Add messages to the `messages` text file"""
-    write_to_file("data/messages.txt" , "({0}) {1} - {2}\n".format(
-            datetime.now().strftime("%H:%M:%S"),
-            username.title(),
-            message))
+
     
-
-
-
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -35,18 +27,12 @@ def index():
     return render_template("index.html")
 
 
-
-
-
 @app.route('/<username>')
 def user(username):
-    """Display welcome MGS messages-----------------------------------"""
+    """Display welcome MGS messages on thegame page -----------------------"""
     return render_template("thegame.html", 
                             username=username,)
                             
-
-
-
 
 
 app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
