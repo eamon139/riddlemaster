@@ -14,7 +14,7 @@ def write_to_file(filename, data):
         file.writelines(data)
 
 
-    
+
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -30,9 +30,14 @@ def index():
 @app.route('/<username>')
 def user(username):
     """Display welcome MGS messages on thegame page -----------------------"""
-    return render_template("thegame.html", 
-                            username=username,)
+    data = []
+    with open("data/questions.json", "r") as json_data:
+            data = json.load(json_data)
+            return render_template("thegame.html", username=username, question_data=data)
                             
+                            
+                            
+
 
 
 app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
