@@ -9,24 +9,35 @@
 </head>
 <body>
     
-    
-    <div class="main">
-        <div class="overlay">
+<!-----------------------------------------------------Title and Userwelcome -->
             <div class="container">
                 <h1 class="title">Riddle Game </h1>
-                <h2>Welcome, {{ username }}</h2>
-                
-    </div>
+                <h2>Welcome {{ username }}</h2>
+            </div>
         
+        
+<!--------------------------------------------Questions and submit 1 one list-- 
 
 {% for questions in question_data %}
 
-<h3>{{ questions.name}}</h3>
-<p>{{ questions.question}} <input type="text" class="form-control" placeholder="Answer" name="answer" id="answer"> </p>
+<p>{{ questions.question}} 
+<input type="text" placeholder="Answer" name="answer" id="answer">
+</p>
 {% endfor %}
         
+        
+        <button class="botton">Submit answer </button>
+        
 
-    
-    
+
+--------------------------------------------Add one question at at a time-->
+        
+            <div class="container">
+                    <h3 class="main_question"> {{ question_data[question_index]["question"] }} </h3>
+            </div>
+            <input type="text" placeholder="Your Answer" name="answer" id="answer">
+            <button class="botton">Submit answer</button>
+            
+   
 </body>
 </html>

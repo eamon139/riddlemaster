@@ -18,9 +18,7 @@ def write_to_file(filename, data):
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-    """Main page ad user name ---------------------------------------"""
-    
-    # Handel the post request
+    """Main page add user name ---------------------------------------------"""
     if request.method == "POST":
         write_to_file("data/users.txt", request.form["username"] + "\n")
         return redirect(request.form["username"])
@@ -33,10 +31,17 @@ def user(username):
     data = []
     with open("data/questions.json", "r") as json_data:
             data = json.load(json_data)
-            return render_template("thegame.html", username=username, question_data=data)
-                            
-                            
-                            
+        
+ 
+    """Add question -------------------------------------------------------"""
+    question_index = 2
+    if request.method == "POST":
+       
+        question_index = int(request.form["question_index"])
+
+    
+    return render_template("thegame.html",
+                            username=username, question_data=data, question_index=question_index)
 
 
 
