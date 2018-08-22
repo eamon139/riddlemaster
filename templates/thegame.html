@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
+        
+        <title>Game</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
+        
+    </head>
+        <body>
     
-    <title>Game</title>
-    
-   <link rel="stylesheet" href="../css/style.css" type="text/css" />
-    
-</head>
-<body>
-    
-<!-----------------------------------------------------Title and Userwelcome -->
+<!-----------------------------------------------------Title and User welcome -->
             <div class="container">
                 <h1 class="title">Riddle Game </h1>
                 <h2>Welcome {{ username }}</h2>
             </div>
-        
-        
-<!--------------------------------------------Questions and submit 1 one list-- 
 
-{% for questions in question_data %}
-
-<p>{{ questions.question}} 
-<input type="text" placeholder="Answer" name="answer" id="answer">
-</p>
-{% endfor %}
-        
-        
-        <button class="botton">Submit answer </button>
-        
-
-
---------------------------------------------Add one question at at a time-->
+<!--------------------------------------------Add one question at at a time-->
         
             <div class="container">
                     <h3 class="main_question"> {{ question_data[question_index]["question"] }} </h3>
             </div>
-            <input type="text" placeholder="Your Answer" name="answer" id="answer">
-            <button class="botton">Submit answer</button>
+<!--------------------------------------------Answer input-->            
+            <div>
+                <form method="POST">
+                    <input type="text" placeholder="Your Guess" name="guess" id="guess">
+                    
+                    <button class="botton">Submit answer</button>
+                </form>
+            </div>
+            
             
    
-</body>
+    </body>
 </html>

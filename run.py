@@ -16,6 +16,7 @@ def write_to_file(filename, data):
 
 
 
+
 @app.route('/', methods=["GET", "POST"])
 def index():
     """Main page add user name ---------------------------------------------"""
@@ -25,7 +26,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/<username>')
+@app.route('/<username>', methods=["GET", "POST"])
 def user(username):
     """Display welcome MGS messages on thegame page -----------------------"""
     data = []
@@ -33,13 +34,20 @@ def user(username):
             data = json.load(json_data)
         
  
-    """Add question -------------------------------------------------------"""
-    question_index = 2
+    ###--Add question
+    question_index = 0
     if request.method == "POST":
        
-        question_index = int(request.form["question_index"])
+       write_to_file("data/guess.txt", request.form["guess"] + "\n")
+       
+       user_response = request.form["guess"].lower()
+       
+       if data[question_index]["answer"] == user_response:
+            # Correct answer
+            # Go to next riddle
+            question_index += 1
+  
 
-    
     return render_template("thegame.html",
                             username=username, question_data=data, question_index=question_index)
 

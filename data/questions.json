@@ -2,52 +2,52 @@
   {
     "name": "question_0",
     "question": "What can travel around the world while staying in a corner?",
-    "answer": "A stamp"
+    "answer": "stamp"
   },
   {
     "name": "question_1",
     "question": "What has an eye but can not see?",
-    "answer": "A needle"
+    "answer": "needle"
   },
   {    
     "name": "question_2",
     "question": "I have a neck, but no head, and I wear a cap. What am I?",
-    "answer": "A bottle"
+    "answer": "bottle"
     
   },
   {    
     "name": "question_3",
     "question": "You can break me without touching me, or even seeing me. What am I?",
-    "answer": "A promise"
+    "answer": "promise"
   },
   {    
     "name": "question_4",
     "question": "The more you take the more you leave behind.  What am I?",
-    "answer": "Footsteps"
+    "answer": "footsteps"
   },
   {    
     "name": "question_5",
     "question": "I eat, I live. I breathe, I live. I drink, I die. What am I?",
-    "answer": "Fire"
+    "answer": "fire"
   },
   {    
     "name": "question_6",
     "question": "I am tall when young and short when I am old. What am I?",
-    "answer": "A candle"
+    "answer": "candle"
   },
   {    
     "name": "question_7",
     "question": "I have a face but no eyes, hands but no arms. What am I?",
-    "answer": "A clock"
+    "answer": "clock"
   },
   {    
     "name": "question_8",
     "question": "The more you take away from me, the bigger I shall get. What am I?",
-    "answer": "A hole"
+    "answer": "hole"
   },
   {    
     "name": "question_9",
     "question": "I start with an E, end with an E, and have a letter in me. What am I?",
-    "answer": "Envelope"
+    "answer": "envelope"
   }
 ]
