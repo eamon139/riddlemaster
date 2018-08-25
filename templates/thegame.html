@@ -19,7 +19,7 @@
 <!--------------------------------------------Add one question at at a time-->
         
             <div class="container">
-                    <h3 class="main_question"> {{ question_data[question_index]["question"] }} </h3>
+                     <h3 class="main_question"> {{ question_data[q_index]["question"] }} </h3>
             </div>
 <!--------------------------------------------Answer input-->            
             <div>
@@ -28,6 +28,18 @@
                     
                     <button class="botton">Submit answer</button>
                 </form>
+            </div>
+            
+            
+<!--------------------------------------------wrong answer-->            
+
+            <div>
+                <h3>Wrong Answer</h3>
+                
+                {% for wrong in wrong_answer %}
+                            <li class="bullets">{{wrong}}</li>
+                            {% endfor %}
+                
             </div>
             
             
