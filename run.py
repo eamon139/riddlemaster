@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.secret_key = 'some_secret'
 data = []
 q_index = 0
+guessno = 0
 
 def write_to_file(filename, data):
     """Handle process of writing data to a file"""
@@ -17,10 +18,29 @@ def get_wrong_guess_list():
     wrong = []
     with open("data/wrong.txt", "r") as wrong_answer:
         wrong = [row for row in wrong_answer if len(row.strip()) > 0]
-    return wrong        
+    return wrong
+    
+def get_leaderboard():
+    leaderboard =[]
+    with open("data/leaderboard.txt", "r") as the_leaderboard:
+        leaderboard = [row for row in the_leaderboard if len(row.strip()) > 0]
+    return leaderboard
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         
 
-
+### -----------------------------Login page------------------------------
 @app.route('/', methods=["GET", "POST"])
 def index():
     """Main page add user name ---------------------------------------------"""
@@ -33,7 +53,7 @@ def index():
 
 
 
-### create game page
+### ------------------------create game page--------------------------------
 @app.route('/<username>', methods=["GET", "POST"])
 def user(username):
     """Display welcome MGS messages on thegame page -----------------------"""
@@ -48,35 +68,39 @@ def user(username):
     
     if request.method == "POST":
         global q_index
+        global guessno
         user_response = request.form["guess"].lower()
+        
        
         if data[q_index]["answer"] == user_response:
             # Correct answer
-
+            guessno += 1
             q_index += 1
-            print("Correct")
-            write_to_file("data/right.txt", request.form["guess"] + "\n")
             
             # wrong answer
         else:
-            print("Wrong")
+            guessno += 1
             write_to_file("data/wrong.txt", request.form["guess"] + "\n")
+            print 
     
     if request.method == "POST":
-        if user_response == "envelope" and q_index > 9:
-            return render_template("endgame.html", username=username, q_index=q_index)
+        ###------remove to play fullgame ------------>         if user_response == "envelope" and q_index > 9:
+        if user_response == "bottle" and q_index > 2:
+            leaderboard = get_leaderboard()
+            write_to_file("data/leaderboard.txt", request.form["guess"] + "\n")
+            return render_template("endgame.html", q_index=q_index, guessno=guessno, username=username, the_leaderboard = leaderboard )
+            
             
     wrong = get_wrong_guess_list()
     
     
-
-  
-
     return render_template("thegame.html",
                             username=username, question_data=data, q_index=q_index, wrong_answer=wrong)
+###-------endgame page--------------------
 
 
-
+    
+    
 
 
 

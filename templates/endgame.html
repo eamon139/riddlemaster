@@ -11,10 +11,29 @@
 <body>
 
 
-{{ username }} your scored is {{ q_index }}out of ten 
+
+
+<h1 class="title">Riddle Game </h1>
+                
+
+ 
+{{ username }} Your number of guesses was {{guessno}}
 
 <p>thank you for playing</p>
 <p>Play again</p>
+
+            <div>
+                <h3>Leaderboard</h3>
+                
+                {% for leaderboard in the_leaderboard %}
+                            <li class="bullets">{{leaderboard}}</li>
+                            {% endfor %}
+                
+            </div>
+
+
+
+
 
 </body>
 </html>

@@ -17,20 +17,29 @@
                 <div>
                     <!-- User name enter -->
                     <form method="POST">
-                        <input type="text" id="username" name="username">
+                        <input type="text" id="username" name="username" autocomplete="off">
                         <button class="botton">Go </button>
                     </form>
                 </div>
             </div>
         
         
-            <div class="container">
-                <div>
-                    <h2>Leaderboard</h2>
-                    <a></a>
-                </div>
-            </div> 
-    
+
+        
+<!--------------------------------------------leaderboard-->
+
+            <div>
+                <h3>Leaderboard</h3>
+                
+                {% for leaderboard in the_leaderboard %}
+                            <li class="bullets">{{leaderboard}}</li>
+                            {% endfor %}
+                
+            </div>
+
+
+
+
     
 </body>
 </html>
