@@ -26,19 +26,7 @@ def get_leaderboard():
         leaderboard = [row for row in the_leaderboard if len(row.strip()) > 0]
     return leaderboard
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
+
 
 ### -----------------------------Login page------------------------------
 @app.route('/', methods=["GET", "POST"])
@@ -63,31 +51,27 @@ def user(username):
         
  
     ###--Add question
-    
-    
-    
+
     if request.method == "POST":
         global q_index
         global guessno
         user_response = request.form["guess"].lower()
         
-       
         if data[q_index]["answer"] == user_response:
-            # Correct answer
+            ### right answer
             guessno += 1
             q_index += 1
-            
-            # wrong answer
+            #### wrong answer
         else:
             guessno += 1
             write_to_file("data/wrong.txt", request.form["guess"] + "\n")
-            print 
+            print
     
     if request.method == "POST":
         ###------remove to play fullgame ------------>         if user_response == "envelope" and q_index > 9:
         if user_response == "bottle" and q_index > 2:
             leaderboard = get_leaderboard()
-            write_to_file("data/leaderboard.txt", request.form["guess"] + "\n")
+            write_to_file("data/leaderboard.txt", (["username","guessno"]), + "\n")
             return render_template("endgame.html", q_index=q_index, guessno=guessno, username=username, the_leaderboard = leaderboard )
             
             
@@ -97,54 +81,6 @@ def user(username):
     return render_template("thegame.html",
                             username=username, question_data=data, q_index=q_index, wrong_answer=wrong)
 ###-------endgame page--------------------
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""-----------------------------------------------------------------------------
-@app.route('/<username>', methods=["GET", "POST"])
-def user(username):
-    ###Display welcome MGS messages on thegame page -----------------------
-    data = []
-    with open("data/questions.json", "r") as json_data:
-            data = json.load(json_data)
-        
-
-    ###--Add question
-    question_index = 0
-    if request.method == "POST":
-        
-        
-
-        write_to_file("data/guess.txt", request.form["guess"] + "\n")
-       
-        user_response = request.form["guess"].lower()
-       
-        if data[question_index]["answer"] == user_response:
-            # Correct answer
-            # Go to next riddle
-            question_index += 1
-  
-
-    return render_template("thegame.html",
-                            username=username, question_data=data, question_index=question_index)
---------------------------------------------------------------------------------------------------"""
-
-
 
 
 app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
