@@ -97,6 +97,7 @@ def user(username):
 
             return render_template("endgame.html", q_index=q_index, guessno=guessno, username=username, the_leaderboard = leaderboard )
             
+            clear
             
     wrong = get_wrong_guess_list()
     
