@@ -22,13 +22,16 @@
 <p>thank you for playing</p>
 <p>Play again</p>
 
+<a  href="{{ url_for('index') }}">Home</a>
+
+
 <!--------------------------------------------leader board-->
 
             <div>
                 <h3>Leaderboard</h3>
                 
                 {% for leaderboard in the_leaderboard %}
-                            <li class="bullets">{{leaderboard}}</li>
+                            <li type="1">{{leaderboard}}</li>
                             {% endfor %}
                 
             </div>

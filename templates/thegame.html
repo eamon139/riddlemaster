@@ -24,7 +24,7 @@
 <!--------------------------------------------Answer input-->            
             <div>
                 <form method="POST">
-                    <input type="text" placeholder="Your Guess" name="guess" id="guess" autocomplete="off">
+                    <input type="text" placeholder="Your Guess" name="guess" id="guess" autocomplete="off" autofocus="autofocus">
                     
                     <button class="botton">Submit answer</button>
                 </form>
@@ -34,10 +34,10 @@
 <!--------------------------------------------wrong answer-->            
 
             <div>
-                <h3>Wrong Answer</h3>
+                <h3>Wrong Answers</h3>
                 
                 {% for wrong in wrong_answer %}
-                            <li class="bullets">{{wrong}}</li>
+                            <li type = "square">{{wrong}}</li>
                             {% endfor %}
                 
             </div>

@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <title>Game</title>
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
-    
+
 </head>
 <body>
 
             <div class="container">
                 <h1 class="title">Riddle Game </h1>
                 <h2 class="sub">Please enter a username </h2>
-                
+
                 <div>
                     <!-- User name enter -->
                     <form method="POST">
-                        <input type="text" id="username" name="username" autocomplete="off">
+                        <input type="text" id="username" name="username" autocomplete="off" autofocus="autofocus">
                         <button class="botton">Go </button>
                     </form>
                 </div>
             </div>
-        
-        
 
-        
+
+
+
 <!--------------------------------------------leaderboard-->
 
-            <div>
-                <h3>Leaderboard</h3>
-                
-                {% for leaderboard in the_leaderboard %}
-                            <li class="bullets">{{leaderboard}}</li>
-                            {% endfor %}
-                
-            </div>
 
-
-
-
-    
 </body>
 </html>

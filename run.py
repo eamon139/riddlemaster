@@ -14,6 +14,20 @@ def write_to_file(filename, data):
     with open(filename, "a") as file:
         file.writelines(data)
         
+        
+def write_to_file_leaderboard(filename, data):
+    """Handle process of writing data to a file"""
+    with open(filename, "a") as file:
+        file.writelines(data)
+        file.write("\n") # Add newline cause Py JSON does not       
+        
+
+        
+def write_leaderboard(filename, data):
+    with open(filename, "a") as f:
+        json.dump(data, f)
+        
+        
 def get_wrong_guess_list():
     wrong = []
     with open("data/wrong.txt", "r") as wrong_answer:
@@ -48,7 +62,7 @@ def user(username):
     data = []
     with open("data/questions.json", "r") as json_data:
             data = json.load(json_data)
-        
+            ##open("data/wrong.txt", 'w').close()
  
     ###--Add question
 
@@ -61,17 +75,26 @@ def user(username):
             ### right answer
             guessno += 1
             q_index += 1
+            open("data/wrong.txt", 'w').close()
             #### wrong answer
         else:
             guessno += 1
             write_to_file("data/wrong.txt", request.form["guess"] + "\n")
-            print
+            
     
     if request.method == "POST":
-        ###------remove to play fullgame ------------>         if user_response == "envelope" and q_index > 9:
+###------remove to play fullgame ------------>         if user_response == "envelope" and q_index > 9:
         if user_response == "bottle" and q_index > 2:
             leaderboard = get_leaderboard()
-            write_to_file("data/leaderboard.txt", (["username","guessno"]), + "\n")
+            output = [ str(guessno), username]
+            open("data/wrong.txt", 'w').close()
+
+            write_to_file_leaderboard("data/leaderboard.txt", output )
+###            write_to_file("data/leaderboard.json", output)
+            write_leaderboard("data/leaderboard.json", output)
+            
+
+
             return render_template("endgame.html", q_index=q_index, guessno=guessno, username=username, the_leaderboard = leaderboard )
             
             
