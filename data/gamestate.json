@@ -1,0 +1,12 @@
+game_state = {
+    "yoni": {
+        "score": 0,
+        "current_riddle": 0,
+        "attempts_left_for_riddle": 3,
+    },
+    "niel": {
+        "score": 12,
+        "current_riddle": 0,
+        "attempts_left_for_riddle": 3,
+    }
+}

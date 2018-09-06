@@ -10,36 +10,39 @@ q_index = 0
 guessno = 0
 
 def write_to_file(filename, data):
-    """Handle process of writing data to a file"""
+    """ Writing data to a file """
     with open(filename, "a") as file:
         file.writelines(data)
-        
-        
-def write_to_file_leaderboard(filename, data):
-    """Handle process of writing data to a file"""
-    with open(filename, "a") as file:
-        file.writelines(data)
-        file.write("\n") # Add newline cause Py JSON does not       
-        
 
-        
+
+def write_to_file_leaderboard(filename, data):
+    """ Write JSON leaderboard """
+    with open(filename, "a") as file:
+        file.writelines(data)
+        file.write("\n") # Add newline cause Py JSON does not
+
+
 def write_leaderboard(filename, data):
+    """ Write Txt leaderboard """
     with open(filename, "a") as f:
         json.dump(data, f)
-        
-        
+
+
 def get_wrong_guess_list():
+    """ Get wrong guess list """
     wrong = []
     with open("data/wrong.txt", "r") as wrong_answer:
         wrong = [row for row in wrong_answer if len(row.strip()) > 0]
     return wrong
-    
+
+
 def get_leaderboard():
+    """ Get leaderboard form txt file """
     leaderboard =[]
     with open("data/leaderboard.txt", "r") as the_leaderboard:
         leaderboard = [row for row in the_leaderboard if len(row.strip()) > 0]
     return leaderboard
-    
+
 
 
 ### -----------------------------Login page------------------------------
@@ -63,7 +66,7 @@ def user(username):
     with open("data/questions.json", "r") as json_data:
             data = json.load(json_data)
             ##open("data/wrong.txt", 'w').close()
- 
+
     ###--Add question
 
     if request.method == "POST":
@@ -75,13 +78,13 @@ def user(username):
             ### right answer
             guessno += 1
             q_index += 1
-    
+            open("data/wrong.txt", 'w').close()
             #### wrong answer
         else:
             guessno += 1
             write_to_file("data/wrong.txt", request.form["guess"] + "\n")
-            
-    
+
+
     if request.method == "POST":
 ###------remove to play fullgame ------------>         if user_response == "envelope" and q_index > 9:
         if user_response == "bottle" and q_index > 2:
@@ -99,8 +102,8 @@ def user(username):
             
             
     wrong = get_wrong_guess_list()
-    
-    
+
+
     return render_template("thegame.html",
                             username=username, question_data=data, q_index=q_index, wrong_answer=wrong)
 ###-------endgame page--------------------
