@@ -75,7 +75,7 @@ def user(username):
             ### right answer
             guessno += 1
             q_index += 1
-            open("data/wrong.txt", 'w').close()
+    
             #### wrong answer
         else:
             guessno += 1
@@ -97,7 +97,6 @@ def user(username):
 
             return render_template("endgame.html", q_index=q_index, guessno=guessno, username=username, the_leaderboard = leaderboard )
             
-            clear
             
     wrong = get_wrong_guess_list()
     
